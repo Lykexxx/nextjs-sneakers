@@ -10,7 +10,7 @@ const Header = () => {
       <header>
         <Link href={"/"}>
           <div className={cl.header_left}>
-            <img width={40} height={40} src="/logo.png" alt="logo" />
+            <img width={40} height={40} src="./logo.png" alt="logo" />
             <div className="name">
               <h3>REACT SNEAKERS</h3>
               <p>Магазин лучших кроссовок</p>
@@ -25,12 +25,12 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link href={"/basket"}>
+              <Link href={"/favorite"}>
                 <CiHeart size={18} /> Закладки
               </Link>
             </li>
             <li>
-              <Link href={"/basket"}>
+              <Link href={"/profile"}>
                 <FaUser size={18} /> Профиль
               </Link>
             </li>
