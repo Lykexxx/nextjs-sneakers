@@ -8,7 +8,7 @@ const Page = () => {
   return (
     <main className={cl.main}>
       <div className={cl.prev}>
-        <Image height={300} width={960} src="/img/prev.png" alt="prev" />
+        <Image height={300} width={960} src="img/prev.png" alt="prev" />
       </div>
       <div className={cl.title}>
         <h1>Все кроссовки</h1>
