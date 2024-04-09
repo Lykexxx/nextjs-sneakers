@@ -9,6 +9,12 @@
     font-weight: 400;
     font-size: 14px;
     color: #5c5c5c;
+    transition: all .1s ease;
+
+    &:hover {
+      color: #db0f0f;
+      transform: translateY(-2px)
+    }
   }
 
   a {
@@ -35,5 +41,17 @@
     font-weight: 400;
     font-size: 14px;
     color: #9d9d9d;
+  }
+
+  &:hover h3{
+    transform: translateY(-2px);
+    color: #db0f0f;
+  }
+  &:hover p{
+    transform: translateY(-2px);
+    color: #db0f0f;
+  }
+  &:hover img {
+    transform: translateY(-2px);
   }
 }
