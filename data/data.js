@@ -39,7 +39,7 @@ const data = [
     id: 7,
     name: "Мужские Кроссовки Jordan Air Jordan 11",
     price: "10 799 руб.",
-    img: "/img/7.jpg"
+    img: "img/7.jpg"
   },
   {
     id: 8,
