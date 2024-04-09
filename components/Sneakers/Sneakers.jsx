@@ -1,18 +1,18 @@
+"use client";
 import Image from "next/image";
-import data from "@/data/data";
 import React from "react";
 import cl from "./styles.module.scss";
-import { CiSquarePlus } from "react-icons/ci";
-
+import { FaHeart } from "react-icons/fa";
+import { useSneakers } from "@/store";
 
 const Sneakers = () => {
+  const toggleLike = useSneakers((state) => state.toggleLike);
+  const data = useSneakers((state) => state.data);
+
   return (
-
-    
-
     <div className={cl.container}>
       {data.map((item) => (
-        <div className={cl.cart}>
+        <div key={item.id} className={cl.cart}>
           <Image width={133} height={112} src={item.img} />
           <p className={cl.cart_name}>{item.name}</p>
 
@@ -21,7 +21,13 @@ const Sneakers = () => {
               <p className={cl.cart_price}>Цена:</p>
               <b>{item.price}</b>
             </span>
-            <CiSquarePlus size={32} color="#d3d3d3" cursor={"pointer"}/>
+            <FaHeart
+              style={item.like && {color: "red"}}
+              onClick={() => toggleLike(item.id)}
+              size={20}
+              color="#d3d3d3"
+              cursor={"pointer"}
+            />
           </div>
         </div>
       ))}
