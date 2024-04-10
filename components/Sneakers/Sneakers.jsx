@@ -7,13 +7,18 @@ import { FaCheckSquare } from "react-icons/fa";
 import { useSneakers } from "@/store";
 
 const Sneakers = () => {
-  const toggleLike = useSneakers((state) => state.toggleLike);
-  const toggleBasket = useSneakers((state) => state.toggleBasket);
-  const data = useSneakers((state) => state.data);
+  const toggleLike = useSneakers((state) => state?.toggleLike);
+  const toggleBasket = useSneakers((state) => state?.toggleBasket);
+  const data = useSneakers((state) => state?.data);
+
+  const displayPrice = (e) => {
+    let number = e.toLocaleString('ru-RU')
+    return number
+  }
 
   return (
     <div className={cl.container}>
-      {data.map((item) => (
+      {data?.map((item) => (
         <div key={item.id} className={cl.cart}>
           <Image width={133} height={112} src={item.img} />
           <p className={cl.cart_name}>{item.name}</p>
@@ -21,7 +26,7 @@ const Sneakers = () => {
           <div className={cl.cart_price}>
             <span>
               <p className={cl.cart_price}>Цена:</p>
-              <b>{item.price}</b>
+              <b>{displayPrice(item.price)} руб.</b>
             </span>
             <FaHeart className={cl.like}
               style={item.like && {color: "red", transform: "scale(1.15)"}}

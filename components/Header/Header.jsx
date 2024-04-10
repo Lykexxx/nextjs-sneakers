@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import { IoIosBasket } from "react-icons/io";
@@ -24,7 +25,7 @@ const Header = () => {
           <ul className={cl.list}>
             <li>
               <Link href={"/basket"}>
-                <IoIosBasket size={18} /> 1205 руб.
+                <IoIosBasket size={18} /> <p>Корзина</p>
               </Link>
             </li>
             <li>
