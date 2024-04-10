@@ -24,12 +24,12 @@ const Sneakers = () => {
               <b>{item.price}</b>
             </span>
             <FaHeart className={cl.like}
-              style={item.like && {color: "red"}}
+              style={item.like && {color: "red", transform: "scale(1.15)"}}
               onClick={() => toggleLike(item.id)}
             />
             <FaCheckSquare
               onClick={() => toggleBasket(item.id)}
-              style={item.inBasket && {color: "#68ff84"}}
+              style={item.inBasket && {color: "#68ff84", transform: "scale(1.15)"}}
               size={25}
               color="#d3d3d3"
               cursor={"pointer"}

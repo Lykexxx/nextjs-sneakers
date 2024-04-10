@@ -3,6 +3,7 @@ import Link from "next/link";
 import { IoIosBasket } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
+
 import cl from "./styles.module.scss";
 
 const Header = () => {
