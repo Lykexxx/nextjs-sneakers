@@ -6,7 +6,7 @@ const nextConfig = {
   env: {
     basePath: isProd ? "/nextjs-sneakers" : "",
   },
-  output: "export",
+  // output: "export",
   reactStrictMode: true,
 };
 

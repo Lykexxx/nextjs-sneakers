@@ -10,6 +10,7 @@
 }
 
 .cart {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -32,7 +33,21 @@
     transform: translateY(-6px);
     box-shadow: 0 14px 30px 0 rgba(0, 0, 0, 0.05);
   }
+
 }
+
+.like {
+    position: absolute;
+    top: 10%;
+    bottom: 0;
+    left: 15%;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-image: url();
+    cursor: pointer;
+    color: #d3d3d3;
+  }
 
 .cart_name {
   font-weight: 400;

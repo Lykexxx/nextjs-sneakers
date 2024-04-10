@@ -8,6 +8,7 @@ export const useSneakers = create((set) => ({
       price: "12 999 руб.",
       img: `${process.env.basePath}/img/1.jpg`,
       like: false,
+      inBasket: false,
     },
     {
       id: 2,
@@ -15,6 +16,7 @@ export const useSneakers = create((set) => ({
       price: "12 999 руб.",
       img: `${process.env.basePath}/img/2.jpg`,
       like: false,
+      inBasket: false,
     },
     {
       id: 3,
@@ -22,6 +24,7 @@ export const useSneakers = create((set) => ({
       price: "12 999 руб.",
       img: `${process.env.basePath}/img/3.jpg`,
       like: false,
+      inBasket: false,
     },
     {
       id: 4,
@@ -29,6 +32,7 @@ export const useSneakers = create((set) => ({
       price: "12 999 руб.",
       img: `${process.env.basePath}/img/4.jpg`,
       like: false,
+      inBasket: false,
     },
     {
       id: 5,
@@ -36,6 +40,7 @@ export const useSneakers = create((set) => ({
       price: "15 199 руб.",
       img: `${process.env.basePath}/img/5.jpg`,
       like: false,
+      inBasket: false,
     },
     {
       id: 6,
@@ -43,6 +48,7 @@ export const useSneakers = create((set) => ({
       price: "11 299 руб.",
       img: `${process.env.basePath}/img/6.jpg`,
       like: false,
+      inBasket: false,
     },
     {
       id: 7,
@@ -50,6 +56,7 @@ export const useSneakers = create((set) => ({
       price: "10 799 руб.",
       img: `${process.env.basePath}/img/7.jpg`,
       like: false,
+      inBasket: false,
     },
     {
       id: 8,
@@ -57,6 +64,7 @@ export const useSneakers = create((set) => ({
       price: "16 499 руб.",
       img: `${process.env.basePath}/img/8.jpg`,
       like: false,
+      inBasket: false,
     },
     {
       id: 9,
@@ -64,6 +72,7 @@ export const useSneakers = create((set) => ({
       price: "13 999 руб.",
       img: `${process.env.basePath}/img/9.jpg`,
       like: false,
+      inBasket: false,
     },
     {
       id: 10,
@@ -71,6 +80,7 @@ export const useSneakers = create((set) => ({
       price: "8 499 руб.",
       img: `${process.env.basePath}/img/10.png`,
       like: false,
+      inBasket: false,
     },
     {
       id: 11,
@@ -78,6 +88,7 @@ export const useSneakers = create((set) => ({
       price: "8 999 руб.",
       img: `${process.env.basePath}/img/11.png`,
       like: false,
+      inBasket: false,
     },
     {
       id: 12,
@@ -85,6 +96,7 @@ export const useSneakers = create((set) => ({
       price: "11 299 руб.",
       img: `${process.env.basePath}/img/12.jpg`,
       like: false,
+      inBasket: false,
     },
   ],
   count: 0,
@@ -95,4 +107,12 @@ export const useSneakers = create((set) => ({
       ),
     }));
   },
+  toggleBasket: (id) => {
+    set((state) => ({
+      data: state.data.map((item) =>
+        id === item.id ? { ...item, inBasket: !item.inBasket } : item
+      ),
+    }));
+  },
+
 }));

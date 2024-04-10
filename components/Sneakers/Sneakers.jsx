@@ -3,10 +3,12 @@ import Image from "next/image";
 import React from "react";
 import cl from "./styles.module.scss";
 import { FaHeart } from "react-icons/fa";
+import { FaCheckSquare } from "react-icons/fa";
 import { useSneakers } from "@/store";
 
 const Sneakers = () => {
   const toggleLike = useSneakers((state) => state.toggleLike);
+  const toggleBasket = useSneakers((state) => state.toggleBasket);
   const data = useSneakers((state) => state.data);
 
   return (
@@ -21,10 +23,14 @@ const Sneakers = () => {
               <p className={cl.cart_price}>Цена:</p>
               <b>{item.price}</b>
             </span>
-            <FaHeart
+            <FaHeart className={cl.like}
               style={item.like && {color: "red"}}
               onClick={() => toggleLike(item.id)}
-              size={20}
+            />
+            <FaCheckSquare
+              onClick={() => toggleBasket(item.id)}
+              style={item.inBasket && {color: "#68ff84"}}
+              size={25}
               color="#d3d3d3"
               cursor={"pointer"}
             />
