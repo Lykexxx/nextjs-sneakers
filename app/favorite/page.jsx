@@ -4,9 +4,9 @@ import cl from "./favorite.module.scss";
 import { BsArrowLeftSquareFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 import { FaCheckSquare } from "react-icons/fa";
-import Link from "next/link";
 import Image from "next/image";
 import { useSneakers } from "@/store";
+import { useRouter } from "next/navigation"
 
 const Favorite = () => {
   const toggleLike = useSneakers((state) => state.toggleLike);
@@ -14,13 +14,15 @@ const Favorite = () => {
   const data = useSneakers((state) => state.data);
   let haveData = data.filter(item => item.like)
 
+  const router = useRouter()
+
   return (
     <>
       <div className={cl.container}>
         <div className={cl.title}>
-          <Link href={"/"}>
-            <BsArrowLeftSquareFill size={27} />
-          </Link>
+          <div onClick={() => router.back()}>
+            <BsArrowLeftSquareFill cursor={"pointer"} size={27} />
+          </div>
           <h1>Избранные</h1>
         </div>
         <div className={cl.sneakers}>
@@ -61,7 +63,7 @@ const Favorite = () => {
             )
           )}
         </div>
-        {haveData.length === 0 && 
+        {!haveData.length && 
           <div className={cl.none}>
             <Image
               src={`${process.env.basePath}/img/sadFavorite.png`}
