@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "/nextjs-sneakers",
+  // basePath: "/nextjs-sneakers",
   output: "export",
-  reactStrictMode: true,
+  // reactStrictMode: true,
 };
 
 export default nextConfig;

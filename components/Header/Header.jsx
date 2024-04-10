@@ -6,12 +6,13 @@ import { FaUser } from "react-icons/fa";
 import cl from "./styles.module.scss";
 
 const Header = () => {
+
   return (
     <>
       <header>
         <Link href={"/"}>
           <div className={cl.header_left}>
-            <Image width={40} height={40} src="img/logo.png" alt="logo"/>
+            <Image width={40} height={40} src="/img/logo.png" alt="logo"/>
             <div className="name">
               <h3>REACT SNEAKERS</h3>
               <p>Магазин лучших кроссовок</p>
