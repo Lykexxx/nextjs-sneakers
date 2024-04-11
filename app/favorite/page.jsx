@@ -6,15 +6,15 @@ import { FaHeart } from "react-icons/fa";
 import { FaCheckSquare } from "react-icons/fa";
 import Image from "next/image";
 import { useSneakers } from "@/store";
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation";
 
 const Favorite = () => {
   const toggleLike = useSneakers((state) => state.toggleLike);
   const toggleBasket = useSneakers((state) => state.toggleBasket);
   const data = useSneakers((state) => state.data);
-  let haveData = data.filter(item => item.like)
+  let haveData = data.filter((item) => item.like);
 
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <>
@@ -35,7 +35,7 @@ const Favorite = () => {
                 <div className={cl.cart_price}>
                   <span>
                     <p className={cl.cart_price}>Цена:</p>
-                    <b>{item.price}</b>
+                    <b>{item.price.toLocaleString("ru-RU")} руб.</b>
                   </span>
                   <FaHeart
                     className={cl.like}
@@ -58,9 +58,7 @@ const Favorite = () => {
                   />
                 </div>
               </div>
-            ) : (
-              undefined
-            )
+            ) : undefined
           )}
         </div>
         {!haveData.length && 

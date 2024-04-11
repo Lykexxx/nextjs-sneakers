@@ -1,23 +1,31 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import cl from "../favorite/favorite.module.scss";
 import { BsArrowLeftSquareFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 import { FaCheckSquare } from "react-icons/fa";
 import Image from "next/image";
 import { useSneakers } from "@/store";
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation";
 
 const Basket = () => {
-
   const toggleLike = useSneakers((state) => state.toggleLike);
   const toggleBasket = useSneakers((state) => state.toggleBasket);
   const data = useSneakers((state) => state.data);
-  let haveBasket = data.filter(item => item.inBasket)
-  let arrBasket = haveBasket.map(item => item.price)
-  const sumBasket = arrBasket.reduce((acc, value) => acc + parseInt(value), 0)
+  let count = useSneakers((state) => state.count);
+  let haveBasket = data.filter((item) => item.inBasket);
+  let arrBasket = haveBasket.map((item) => item.price);
+  count = arrBasket.reduce((acc, value) => acc + parseInt(value), 0);
 
-  const router = useRouter()
+  const router = useRouter();
+
+  const handlerSales = (array, sum) => {
+    let haveSales = array.forEach(item => (item.sales = true))
+    data.forEach(item => (item.inBasket = false))
+    sum = 0;
+    console.log(sum);
+  }
+  
 
   return (
     <>
@@ -38,7 +46,7 @@ const Basket = () => {
                 <div className={cl.cart_price}>
                   <span>
                     <p className={cl.cart_price}>Цена:</p>
-                    <b>{item.price.toLocaleString('ru-RU')} руб.</b>
+                    <b>{item.price.toLocaleString("ru-RU")} руб.</b>
                   </span>
                   <FaHeart
                     className={cl.like}
@@ -61,15 +69,15 @@ const Basket = () => {
                   />
                 </div>
               </div>
-            ) : (undefined)
+            ) : undefined
           )}
         </div>
-        {haveBasket.length 
-          ? <div className={cl.sale}>
-              <b>Сумма: {sumBasket.toLocaleString('ru-RU')} руб.</b>
-              <button>Оплатить</button>
-            </div> 
-          : undefined}
+        {haveBasket.length ? (
+          <div className={cl.sale}>
+            <b>Сумма: {count.toLocaleString("ru-RU")} руб.</b>
+            <button onClick={() => handlerSales(haveBasket, count)}>Оплатить</button>
+          </div>
+        ) : undefined}
         {!haveBasket.length && 
           <div className={cl.none}>
             <Image
@@ -84,6 +92,6 @@ const Basket = () => {
       </div>
     </>
   );
-}
+};
 
-export default Basket
+export default Basket;

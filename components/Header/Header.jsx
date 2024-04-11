@@ -6,8 +6,17 @@ import { CiHeart } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
 
 import cl from "./styles.module.scss";
+import { useSneakers } from "@/store";
 
 const Header = () => {
+
+  let count = useSneakers((state) => state.count);
+
+  const data = useSneakers((state) => state.data);
+  count = data.filter(item => item.inBasket).map(item => item.price).reduce((acc, value) => acc + parseInt(value), 0)
+  // let haveBasket = data.filter(item => item.inBasket)
+  // let arrBasket = haveBasket.map(item => item.price)
+  // arrBasket.reduce((acc, value) => acc + parseInt(value), 0)
 
   return (
     <>
@@ -25,7 +34,7 @@ const Header = () => {
           <ul className={cl.list}>
             <li>
               <Link href={"/basket"}>
-                <IoIosBasket size={18} /> <p>Корзина</p>
+                <IoIosBasket size={18} /> <p>{count ? (count.toLocaleString("ru-RU") + " руб.") : 'Корзина'}</p>
               </Link>
             </li>
             <li>
