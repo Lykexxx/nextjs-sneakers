@@ -123,10 +123,9 @@ export const useSneakers = create((set) => ({
     set((state) => {
       const product = state.data.find((p) => p.id === id);
       if (product) {
-        product.inBasket === false ? true : false
-        if (product.inBasket) {
-          state.count += product.price;
-        }
+        product.inBasket = true
+        state.count += product.price;
+      
       }
       return { data: [...state.data], count: state.count };
     })
