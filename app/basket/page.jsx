@@ -12,20 +12,10 @@ const Basket = () => {
   const toggleLike = useSneakers((state) => state.toggleLike);
   const toggleBasket = useSneakers((state) => state.toggleBasket);
   const data = useSneakers((state) => state.data);
-  let count = useSneakers((state) => state.count);
-  let haveBasket = data.filter((item) => item.inBasket);
-  let arrBasket = haveBasket.map((item) => item.price);
-  count = arrBasket.reduce((acc, value) => acc + parseInt(value), 0);
-
+  const count = useSneakers((state) => state.count);
+  const checkout = useSneakers((state) => state.checkout);
   const router = useRouter();
-
-  const handlerSales = (array, sum) => {
-    let haveSales = array.forEach(item => (item.sales = true))
-    data.forEach(item => (item.inBasket = false))
-    sum = 0;
-    console.log(sum);
-  }
-  
+  const checkItemBasket = data.filter((item) => item.inBasket);
 
   return (
     <>
@@ -37,7 +27,7 @@ const Basket = () => {
           <h1>Корзина</h1>
         </div>
         <div className={cl.sneakers}>
-          {haveBasket.map((item) =>
+          {data.map((item) =>
             item.inBasket ? (
               <div key={item.id} className={cl.cart}>
                 <Image width={133} height={112} src={item.img} />
@@ -72,13 +62,9 @@ const Basket = () => {
             ) : undefined
           )}
         </div>
-        {haveBasket.length ? (
-          <div className={cl.sale}>
-            <b>Сумма: {count.toLocaleString("ru-RU")} руб.</b>
-            <button onClick={() => handlerSales(haveBasket, count)}>Оплатить</button>
-          </div>
-        ) : undefined}
-        {!haveBasket.length && 
+
+        
+        {!count && 
           <div className={cl.none}>
             <Image
               src={`${process.env.basePath}/img/sadFavorite.png`}
@@ -89,6 +75,12 @@ const Basket = () => {
             <span>Попробуйте добавить кроссовки в корзину</span>
           </div>
         }
+        {count && (
+          <div className={cl.sale}>
+            <b>Общая сумма: {count > 0 ? count.toLocaleString("ru-RU") : ''} руб.</b>
+            <button onClick={checkout}>Оплатить</button>
+          </div>
+        )}
       </div>
     </>
   );

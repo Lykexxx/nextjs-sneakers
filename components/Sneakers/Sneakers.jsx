@@ -11,11 +11,6 @@ const Sneakers = () => {
   const toggleBasket = useSneakers((state) => state?.toggleBasket);
   const data = useSneakers((state) => state?.data);
 
-  const displayPrice = (e) => {
-    let number = e.toLocaleString('ru-RU')
-    return number
-  }
-
   return (
     <div className={cl.container}>
       {data?.map((item) => (
@@ -26,7 +21,7 @@ const Sneakers = () => {
           <div className={cl.cart_price}>
             <span>
               <p className={cl.cart_price}>Цена:</p>
-              <b>{displayPrice(item.price)} руб.</b>
+              <b>{item.price.toLocaleString('ru-RU')} руб.</b>
             </span>
             <FaHeart className={cl.like}
               style={item.like && {color: "red", transform: "scale(1.15)"}}

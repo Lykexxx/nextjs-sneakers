@@ -46,3 +46,36 @@
     left: 10px;
   }
 }
+
+.searchResults {
+  max-height: 100px; /* Максимальная высота контейнера */
+  overflow-y: auto; /* Включение вертикальной прокрутки при необходимости */
+  border: 1px solid #ccc;
+  border-top: none; /* Убираем верхнюю рамку, чтобы контейнер был как окно */
+  visibility: hidden; /* Скрываем контейнер по умолчанию */
+  opacity: 0; /* Делаем контейнер невидимым по умолчанию */
+  transition: visibility 0s, opacity 0.3s linear; /* Добавляем плавное появление */
+}
+
+.searchResultsShow {
+  visibility: visible; /* Показываем контейнер при наличии класса .show */
+  opacity: 1; /* Делаем контейнер видимым */
+}
+
+.ul {
+  list-style-type: none;
+  padding: 0;
+  
+    li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  }
+
+  li:hover {
+  background-color: #eaeaea;
+  }
+
+}

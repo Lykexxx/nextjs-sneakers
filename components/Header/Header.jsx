@@ -11,9 +11,8 @@ import { useSneakers } from "@/store";
 const Header = () => {
 
   let count = useSneakers((state) => state.count);
-
   const data = useSneakers((state) => state.data);
-  count = data.filter(item => item.inBasket).map(item => item.price).reduce((acc, value) => acc + parseInt(value), 0)
+  // count = data.filter(item => item.inBasket).map(item => item.price).reduce((acc, value) => acc + parseInt(value), 0)
   // let haveBasket = data.filter(item => item.inBasket)
   // let arrBasket = haveBasket.map(item => item.price)
   // arrBasket.reduce((acc, value) => acc + parseInt(value), 0)

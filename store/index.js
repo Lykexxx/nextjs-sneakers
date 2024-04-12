@@ -120,10 +120,25 @@ export const useSneakers = create((set) => ({
     }));
   },
   toggleBasket: (id) => {
+    set((state) => {
+      const product = state.data.find((p) => p.id === id);
+      if (product) {
+        product.inBasket = true;
+        state.count += product.price;
+      }
+      return { data: [...state.data], count: state.count };
+    })
+  },
+  checkout: () => {
     set((state) => ({
-      data: state?.data.map((item) =>
-        id === item.id ? { ...item, inBasket: !item.inBasket } : item
-      ),
+      ...state,
+      data: state.data.map(product => ({
+        ...product,
+        sales: product.inBasket ? true : product.sales,
+        inBasket: false, // Если товар был добавлен в корзину, помечаем его как находящийся в корзине
+      })).filter(product => !product.inBasket),
+      count: 0,
     }));
+    alert('Оплата прошла успешно.')
   },
 }));
