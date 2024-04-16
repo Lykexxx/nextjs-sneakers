@@ -123,9 +123,15 @@ export const useSneakers = create((set) => ({
     set((state) => {
       const product = state.data.find((p) => p.id === id);
       if (product) {
+<<<<<<< HEAD
         const newInBasketState = !product.inBasket; // Инвертируем состояние inBasket
         product.inBasket = newInBasketState;
         state.count += newInBasketState ? product.price : -product.price; // Добавляем или вычитаем цену товара из общей суммы корзины
+=======
+        product.inBasket = true
+        state.count += product.price;
+      
+>>>>>>> d9ded026630490c168cbcbcf3eed8b65581b9cf3
       }
       return { data: [...state.data], count: state.count };
     })
