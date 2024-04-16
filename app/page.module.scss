@@ -11,9 +11,19 @@
 
 .prev {
   margin: 45px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 300px;
+  position: relative;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+    margin: 0 auto;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 
 .title {
@@ -26,7 +36,7 @@
 .search {
   position: relative;
   color: #c4c4c4;
-  opacity: .6;
+  opacity: 0.6;
 
   input {
     font-weight: 400;
@@ -65,17 +75,16 @@
 .ul {
   list-style-type: none;
   padding: 0;
-  
-    li {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+
+  li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
   }
 
   li:hover {
-  background-color: #eaeaea;
+    background-color: #eaeaea;
   }
-
 }

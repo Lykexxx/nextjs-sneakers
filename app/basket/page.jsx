@@ -63,8 +63,7 @@ const Basket = () => {
           )}
         </div>
 
-        
-        {!count && 
+        {checkItemBasket.length === 0 && (
           <div className={cl.none}>
             <Image
               src={`${process.env.basePath}/img/sadFavorite.png`}
@@ -74,10 +73,12 @@ const Basket = () => {
             <h2>В корзине пусто :( </h2>
             <span>Попробуйте добавить кроссовки в корзину</span>
           </div>
-        }
-        {count && (
+        )}
+        {checkItemBasket.length !== 0 && (
           <div className={cl.sale}>
-            <b>Общая сумма: {count > 0 ? count.toLocaleString("ru-RU") : ''} руб.</b>
+            <b>
+              Общая сумма: {count > 0 ? count.toLocaleString("ru-RU") : ""} руб.
+            </b>
             <button onClick={checkout}>Оплатить</button>
           </div>
         )}

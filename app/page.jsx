@@ -24,9 +24,8 @@ const Page = () => {
   return (
     <main className={cl.main}>
       <div className={cl.prev}>
-        <Image
-          height={300}
-          width={960}
+        <img
+          fill
           src={`${process.env.basePath}/img/prev.png`}
           alt="prev"
         />
